@@ -1,1 +1,30 @@
-copy and paste from google doc
+Idea #1
+
+Users will input what food items they need to buy from a grocery store into the app — call this “creating a shopping list.” 
+The user will then be able to set a mile-radius showing all of the grocery stores within that radius based on their location. 
+The app will then process the shopping list and pull from each of the grocery stores the price of each item on the list and whether or not it is in stock. 
+The app will display the price of each item at each store, and it will highlight the cheapest option. 
+The app will also show the cheapest store overall to buy groceries 
+(if carrots are cheaper at Star Market than Trader Joe’s but Trader Joe’s is ultimately cheaper cumulatively for all items on the shopping list, 
+Trader Joe’s would be the cheapest option). 
+A database will be used to store profile information for this app. 
+The public APIs that we will use are from Trader Joe’s, Target, Star Market, Whole Foods, etc. 
+For third party authentication, we will use OAuth through a google profile. 
+We will use a decoupled architecture in which the front and back ends will communicate via a RESTful interface.
+
+Idea #2 
+
+The app will contain the media libraries of the top streaming services in the United States. 
+The user will be able to input into the app which streaming services they have access to. 
+The user can then look up in the app any movie or television show that they want to watch, 
+and the app will search the media libraries of the given streaming services for the user’s request. 
+The app will return the platform the requested movie/show is on, and the user can then launch that platform. 
+For example, if a user looks up “New Girl” on the app, “New Girl — Netflix” will pop up, 
+and then the user can then launch “New Girl” on Netflix right from the app. 
+A database will be used to store profile information for this app. 
+The public APIs that we will use are from Netflix, Hulu, HBOMax, etc. 
+For third party authentication, we will use OAuth through a google profile. 
+We will use a decoupled architecture in which the front and back ends will communicate via a RESTful interface.
+
+
+
