@@ -1,7 +1,9 @@
+import NavBar from './components/NavBar';
+
 function App() {
   return (
     <div className="text-center">
-      This is working
+      <NavBar></NavBar>      
     </div>
   );
 }
