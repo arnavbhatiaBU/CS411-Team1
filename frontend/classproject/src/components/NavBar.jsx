@@ -10,9 +10,10 @@ const NavBar = (props) => {
     };
 
     const handleClick = () => {
+        const parsedInput = searchTerm.split("-");
         var config = {
             method: 'get',
-            url: 'http://127.0.0.1:5000/holidaybydate?year=2021&month=03&day=14',
+            url: `http://127.0.0.1:5000/holidaybydate?year=${parsedInput[0]}&month=${parsedInput[1]}&day=${parsedInput[2]}`,
             headers: { }
           };
           
