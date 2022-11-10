@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import requests
 import json
 
@@ -10,7 +11,7 @@ def testing_route():
     return "this is working"
 
 @app.route("/nationalholiday")
-def hello():
+def national_holiday():
     api_key = ""
     with open("./config.json") as f:
         config = json.load(f)
@@ -20,6 +21,15 @@ def hello():
 
     response = requests.request("GET", url)
 
-    print(type(response.json()))
-
     return response.json()
+
+@app.route("/holidaybydate")
+def holiday_by_date():
+    lookup_day = request.args.get("day")
+    lookup_month = request.args.get("month")
+    lookup_year = request.args.get("year")
+    return {
+        "year": lookup_year,
+        "month": lookup_month,
+        "day": lookup_day
+    }
