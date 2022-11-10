@@ -1,6 +1,7 @@
 import { useState } from "react";
+import axios from 'axios';
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleChange = (event) => {
@@ -9,7 +10,20 @@ const NavBar = () => {
     };
 
     const handleClick = () => {
-        console.log(searchTerm);
+        var config = {
+            method: 'get',
+            url: 'http://127.0.0.1:5000/holidaybydate?year=2021&month=03&day=14',
+            headers: { }
+          };
+          
+          axios(config)
+          .then(function (response) {
+            props.updateRes(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
     }
 
     return(
