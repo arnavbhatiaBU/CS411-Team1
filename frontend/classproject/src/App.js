@@ -3,7 +3,7 @@ import { useState } from "react";
 import DataDisplay from "./components/DataDisplay";
 
 function App() {
-  const [searchRes, setSearchRes] = useState("");
+  const [searchRes, setSearchRes] = useState([]);
   return (
     <div className="text-center">
       <NavBar updateRes={setSearchRes}></NavBar>
