@@ -27,4 +27,13 @@ For third party authentication, we will use OAuth through a google profile.
 We will use a decoupled architecture in which the front and back ends will communicate via a RESTful interface.
 
 
-
+IDEA THAT WE WENT WITH
+Input today's data.
+App shows list of national days (national frog day, national ice cream day, etc.)
+User clicks on national day of choosing.
+Generates Spotify playlist.
+Use national days public API.
+Use Spotify API.
+Use React front end.
+Use Flask back end. 
+RESTful interface. 
