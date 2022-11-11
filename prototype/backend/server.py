@@ -48,4 +48,3 @@ def holiday_by_date():
             res.append(each_holiday)
 
     return res
-    
