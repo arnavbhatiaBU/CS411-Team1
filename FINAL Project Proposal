@@ -1,0 +1,13 @@
+PROJECT: NATIONAL DAYS SPOTIFY PLAYLIST
+
+The app will have a bar at the top where the user can enter today's date. 
+After entering the current date, a list of all of today's national holidays appear.
+Examples of this include national ice cream day, national frog day, international women's day, Christmas, etc. 
+From here, the user can click on the national holiday that is of the most interest to them.
+Clicking on the national holdiay will then generate a playlist in Spotify for that chosen day. 
+For example, if today is national basketball day, clicking on that button will generate a Spotify playlist about basketball. 
+We will be using Python for boht the front and back end.
+We will be using Flask and React. 
+The public APIs we will be using is a national days calendar API and the Spotify API. 
+For third party authentication, we will use OAuth through a google profile.
+We will use a decoupled architecture in which the front and back ends will communicate via a RESTful interface.
