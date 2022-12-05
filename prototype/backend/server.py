@@ -27,9 +27,10 @@ def national_holiday():
 
 @app.route("/holidaybydate")
 def holiday_by_date():
-    lookup_day = request.args.get("day")
-    lookup_month = request.args.get("month")
-    lookup_year = request.args.get("year")
+    lookup_day = request.args.get("day") if len(request.args.get("day")) == 2 else "0" + request.args.get("day")
+    lookup_month = request.args.get("month") if len(request.args.get("month")) == 2 else "0" + request.args.get("month")
+
+    print(f"look for month {lookup_month}, and date {lookup_day}")
 
     api_key = ""
     with open("./config.json") as f:
@@ -44,10 +45,24 @@ def holiday_by_date():
     res = []
 
     for each_holiday in parsed_response["holidays"]:
-        if each_holiday["date"] == f"{lookup_year}-{lookup_month}-{lookup_day}":
-            res.append(each_holiday)
+        if lookup_day == each_holiday["date"].split("-")[2] and lookup_month == each_holiday["date"].split("-")[1]:
+            res.append({
+                "name": each_holiday["name"],
+                "date": each_holiday["date"]
+            })
 
-    return res
+    res_with_track = []
+    for each_day in res:
+        search_term = each_day["name"].split(" ")[0]
+        songs = get_track(search_term)
+        temp = {
+            "date": each_day["date"],
+            "name": each_day["name"],
+            "tracks": songs
+        }
+        res_with_track.append(temp)
+
+    return res_with_track
 
 def get_track(holiday_name):
     # Get the access token
@@ -76,7 +91,7 @@ def get_track(holiday_name):
         "Authorization": f"Bearer {access_token}"    
     }
 
-    res = requests.get(url="https://api.spotify.com/v1/search?q=christmas&type=track", headers=header)
+    res = requests.get(url="https://api.spotify.com/v1/search?q={holiday_name}&type=track", headers=header)
 
     res_cleaned = res.json()
     res_tracks = res_cleaned["tracks"]
