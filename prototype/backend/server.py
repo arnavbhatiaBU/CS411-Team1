@@ -28,6 +28,21 @@ def handle_signup():
         f.write(json.dumps(all_users, indent=4))
         return "success"
 
+@app.route("/signin")
+def handle_signin():
+    user_name = request.args.get("name")
+    user_password = request.args.get("password")
+
+    with open("./userInfo.json", "r") as f:
+        all_users = json.load(f)
+        if user_name not in all_users:
+            return "user does not exists"
+        elif all_users[user_name] == user_password:
+            return user_name
+        else:
+            return "password does not match"
+
+ 
 @app.route("/nationalholiday")
 def national_holiday():
     api_key = ""
