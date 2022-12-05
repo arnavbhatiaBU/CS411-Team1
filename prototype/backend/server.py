@@ -12,6 +12,22 @@ CORS(app)
 def testing_route():
     return "this is working"
 
+@app.route("/signup")
+def handle_signup():
+    user_name = request.args.get("name")
+    user_password = request.args.get("password")
+
+    with open("./userInfo.json", "r") as f:
+        all_users = json.load(f)
+        if user_name in all_users:
+            return "user already exists"
+
+    all_users[user_name] = user_password
+
+    with open("./userInfo.json", "w") as f:
+        f.write(json.dumps(all_users, indent=4))
+        return "success"
+
 @app.route("/nationalholiday")
 def national_holiday():
     api_key = ""
