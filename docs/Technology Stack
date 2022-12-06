@@ -3,5 +3,5 @@ We chose Flask due to the simplicity of the framework which did not require an e
 It also does not require a steep learning curve which was pivotal in our decision-making for a project we have a limited timeframe to finish. 
 We decided that this was a better option compared to Django or Express, which felt too complex for the scope of our project. 
 For similar reasons we used React for the frontend, for not only is it easy to learn and navigate, 
-but also has a large and active community we could turn to if we encounter any bugs or errors. 
+but also has a large and active online community we could turn to if we encounter any bugs or errors. 
 React also utilizes a modular structure which would allow us to reuse components.  
