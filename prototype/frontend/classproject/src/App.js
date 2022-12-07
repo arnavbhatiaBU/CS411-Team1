@@ -8,7 +8,7 @@ function App() {
     <div className="text-center">
       <NavBar updateRes={setSearchRes}></NavBar>
       <ul>
-        {searchRes.map(each => <DataDisplay name={each.name}></DataDisplay>)}
+        {searchRes.map(each => <DataDisplay name={each.name} tracks={each.tracks}></DataDisplay>)}
       </ul>
     </div>
   );
