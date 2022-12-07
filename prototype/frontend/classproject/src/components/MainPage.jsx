@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from 'axios';
 
-const NavBar = (props) => {
+const MainPage = (props) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleChange = (event) => {
@@ -14,7 +14,7 @@ const NavBar = (props) => {
         var config = {
             method: 'get',
             url: `http://127.0.0.1:5000/holidaybydate?year=2021&month=${parsedInput[1]}&day=${parsedInput[2]}`,
-            headers: { }
+            headers: { "Access-Control-Allow-Origin": "*" }
           };
           
           axios(config)
@@ -45,4 +45,4 @@ const NavBar = (props) => {
     )
 }
 
-export default NavBar;
+export default MainPage;
