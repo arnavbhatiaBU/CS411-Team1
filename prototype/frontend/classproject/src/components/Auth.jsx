@@ -10,7 +10,7 @@ const Auth = (props) => {
 
     return(
         <>
-        {displaySignIn ? <SignIn goToSignUp={toggleSignIn}></SignIn> : <SignUp goToSignIn={toggleSignIn}></SignUp>}
+        {displaySignIn ? <SignIn goToSignUp={toggleSignIn} success={props.signinSuccess}></SignIn> : <SignUp goToSignIn={toggleSignIn} success={props.signinSuccess}></SignUp>}
         </>
     )
 }

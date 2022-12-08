@@ -13,12 +13,12 @@ const SignUp = (props) => {
     const [userPassword, setUserPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const handelChange = (event) => {
-        if (event.target.id === "emailInput") setUserName(event.target.value);
+    const handleChange = (event) => {
+        if (event.target.id === "userInput") setUserName(event.target.value);
         if (event.target.id === "passwordInput") setUserPassword(event.target.value);
     };
 
-    const handelSignUp = async () => {
+    const handleSignUp = async () => {
         var config = {
             method: 'get',
             url: `http://127.0.0.1:5000/signup?name=${userName}&password=${userPassword}`,
@@ -27,8 +27,8 @@ const SignUp = (props) => {
 
         try {
             const authRes = await axios(config);
-            if (authRes.data == "user registered") {
-                
+            if (authRes.data == "User has already registered for Spotidate!") {
+                props.success();
             } else {
                 setErrors(prev => {
                     return [...prev, authRes.data]
@@ -48,23 +48,24 @@ const SignUp = (props) => {
             <div className={formStyle}>
                 <h1 className={titleStyle}>Sign Up</h1>
                 <input
-                    id={"emailInput"}
+                    id={"userInput"}
                     className={inputStyle}
-                    placeholder={"Please Enter your email"}
-                    onChange={handelChange}
+                    placeholder={"Please enter your username"}
+                    onChange={handleChange}
                     value={userName}
                 ></input>
                 <input
+                    id={"passwordInput"}
                     className={inputStyle}
-                    placeholder={"Please Enter your password"}
-                    onChange={handelChange}
+                    placeholder={"Please enter your password"}
+                    onChange={handleChange}
                     value={userPassword}
                     type={"password"}
                 ></input>
         
                 <button
                     className={buttonStyle}
-                    onClick={handelSignUp}
+                    onClick={handleSignUp}
                 >
                     Sign Up
                 </button>
