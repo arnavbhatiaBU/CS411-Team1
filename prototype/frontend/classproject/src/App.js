@@ -5,6 +5,7 @@ import Auth from "./components/Auth";
 import logo from './components/SpotiDate-1.png'
 
 function App() {
+  const CLIENT_ID = "1bc64da3c71c4ba24665"
   const [searchRes, setSearchRes] = useState([]);
   const [isLoggedIn, setisLoggedIn] = useState(false);
   const handleLoginSuccess= () => {
@@ -13,7 +14,6 @@ function App() {
   
   return (
     <div className="text-center">
-      <style>{'body {backgound-color: black;}'}</style>
       <center><img src={logo} alt="logo" width='250' height='250' /></center>
       <style>{'body { background-color: grey; }'}</style>
       {isLoggedIn ? 

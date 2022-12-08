@@ -1,14 +1,15 @@
 import {useState} from "react";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const SignIn = (props) => {
     const inputStyle = "w-2/3 h-10 border-2 rounded-md border-black mt-8 ml-auto mr-auto bg-transparent text-center text-l text-gray-600 placeholder:text-black placeholder:font-quicksand focus:outline-gray-600";
     const buttonStyle = "text-center border-2 rounded-md border-green-700 w-1/6 ml-auto mr-auto mt-8 text-gray-700 py-2 hover:bg-amber-50 hover:text-gray-600 font-raleway";
     const backgroundStyle = "h-screen w-screen bg-gray-200 flex justify-center";
     const formStyle = "h-1/2 w-1/2 mt-60 flex flex-col";
-    const titleStyle = "text-center text-green mt-8 text-2xl font-raleway";
+    const titleStyle = "text-center text-green mt-150 text-2xl font-raleway";
     const lineStyle = "mt-8 border-dotted w-2/3 ml-auto mr-auto bg-black border-2";
-
+    
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [incorrectPassword, setIncorrectPassword] = useState(false);
@@ -32,13 +33,12 @@ const SignIn = (props) => {
                props.success();
             } else {
                 setIncorrectPassword(true);
+                alert("Please enter the correct username and/or password!")
             }
         } catch (error) {
             console.log(error)
         }
-
     }
-
 
     const handleChange = (event) => {
         if (event.target.id === "userInput") setUserName(event.target.value);
@@ -52,25 +52,25 @@ const SignIn = (props) => {
     return(
         <div className={backgroundStyle}>
             <div className={formStyle}>
-                <h1 className={titleStyle}>Sign In</h1>
+                <h1 className={titleStyle}>Login</h1>
                 <input
                     id={"userInput"}
                     className={inputStyle}
-                    placeholder={"Please Enter your user name"}
+                    placeholder={"Please enter your username"}
                     onChange={handleChange}
                     value={userName}
                 ></input>
                 <input
                     id={"passwordInput"}
                     className={inputStyle}
-                    placeholder={"Please Enter your password"}
+                    placeholder={"Please enter your password"}
                     onChange={handleChange}
                     value={userPassword}
                     type={"password"}
                 ></input>
                 <button
                     className={buttonStyle}
-                    onClick={handleSignIn}
+                    onClick={() => handleSignIn}
                 >
                     Sign In
                 </button>
@@ -80,7 +80,7 @@ const SignIn = (props) => {
                     className={buttonStyle}
                     onClick={handleSignUp}
                 >
-                    Sign Up
+                    Sign Up!
                 </button>
                 {incorrectPassword ? <h1 className={"text-center font-xl text-red-700 mt-4"}>Wrong Password</h1> : null}
             </div>
