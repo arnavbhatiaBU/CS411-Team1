@@ -1,89 +1,64 @@
-import {useState} from "react";
-import axios from "axios";
-import { useAuth0 } from "@auth0/auth0-react";
+import {useState, useEffect} from "react";
 
+const CLIENT_ID = "1bc64da3c71c4ba24665";
 const SignIn = (props) => {
-    const inputStyle = "w-2/3 h-10 border-2 rounded-md border-black mt-8 ml-auto mr-auto bg-transparent text-center text-l text-gray-600 placeholder:text-black placeholder:font-quicksand focus:outline-gray-600";
     const buttonStyle = "text-center border-2 rounded-md border-green-700 w-1/6 ml-auto mr-auto mt-8 text-gray-700 py-2 hover:bg-amber-50 hover:text-gray-600 font-raleway";
     const backgroundStyle = "h-screen w-screen bg-gray-200 flex justify-center";
-    const formStyle = "h-1/2 w-1/2 mt-60 flex flex-col";
-    const titleStyle = "text-center text-green mt-150 text-2xl font-raleway";
-    const lineStyle = "mt-8 border-dotted w-2/3 ml-auto mr-auto bg-black border-2";
     
-    const [userName, setUserName] = useState("");
-    const [userPassword, setUserPassword] = useState("");
-    const [incorrectPassword, setIncorrectPassword] = useState(false);
+    const [rerender, setrerender] = useState(false)
 
-    const handleSignIn = async () => {
-        const data = JSON.stringify({
-            "name": userName,
-            "password": userPassword
-        });
+    useEffect (() => {
+        //localhost:3000/?code=580124151d61558d5dfa
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString)
+        const codeParam = urlParams.get("code");
+        console.log(codeParam);
 
-        var config = {
-            method: 'get',
-            url: `http://127.0.0.1:5000/signin?name=${userName}&password=${userPassword}`,
-            headers: { }
-          };
-          
-        try {
-            const authRes = await axios(config)
-            if (authRes.data != false) {
-               localStorage.setItem("411Project", authRes.data);
-               props.success();
-            } else {
-                setIncorrectPassword(true);
-                alert("Please enter the correct username and/or password!")
+        if(codeParam && (localStorage.getItem("accessToken") === null)){
+            async function getAccessToken(){
+                await fetch("http://localhost:3002/getAccessToken?code=" + codeParam, {
+                    method: "GET"
+                }).then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    console.log(data);
+                    if(data.access_token){
+                        localStorage.setItem("accessToken", data.access_token);
+                        props.reloadPage();
+                        setrerender(!rerender)
+                    }
+                })
             }
-        } catch (error) {
-            console.log(error)
+            getAccessToken();
         }
+    }, []);
+
+    async function getUserData(){
+        await fetch("http://localhost:3002/getUserData", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("accessToken")
+            }}).then((response) => {
+                return response.json();
+            }).then((data) => {
+                console.log(data);
+        })
     }
 
-    const handleChange = (event) => {
-        if (event.target.id === "userInput") setUserName(event.target.value);
-        if (event.target.id === "passwordInput") setUserPassword(event.target.value);
-    };
-
-    const handleSignUp = () => {
-        props.goToSignUp();
-    }
+    function githubLogin(){
+        window.location.assign("https://github.com/login/oauth/authorize?scope=user&client_id=" + CLIENT_ID);
+      }
+    
 
     return(
         <div className={backgroundStyle}>
-            <div className={formStyle}>
-                <h1 className={titleStyle}>Login</h1>
-                <input
-                    id={"userInput"}
-                    className={inputStyle}
-                    placeholder={"Please enter your username"}
-                    onChange={handleChange}
-                    value={userName}
-                ></input>
-                <input
-                    id={"passwordInput"}
-                    className={inputStyle}
-                    placeholder={"Please enter your password"}
-                    onChange={handleChange}
-                    value={userPassword}
-                    type={"password"}
-                ></input>
-                <button
-                    className={buttonStyle}
-                    onClick={() => handleSignIn}
-                >
-                    Sign In
-                </button>
-
-                <hr className={lineStyle} />
-                <button
-                    className={buttonStyle}
-                    onClick={handleSignUp}
-                >
-                    Sign Up!
-                </button>
-                {incorrectPassword ? <h1 className={"text-center font-xl text-red-700 mt-4"}>Wrong Password</h1> : null}
-            </div>
+            <h3>User is not loged in</h3>
+            <button
+                className={buttonStyle}
+                onClick={githubLogin}
+            >
+                Login with GitHub
+            </button>
         </div>
     )
 }

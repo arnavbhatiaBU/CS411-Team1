@@ -12,9 +12,10 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/getAccessToken', async (req, res) => {
-    req.query.code;
+    console.log(req)
     const params = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`
-    await fetch("https://github.com/login/oath/access_token" + params, {
+    console.log(req.query.code)
+    await fetch("https://github.com/login/oauth/access_token" + params, {
         method: "POST",
         headers: {
             "Accept": "application/json"
