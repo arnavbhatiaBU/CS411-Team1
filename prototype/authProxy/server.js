@@ -14,7 +14,6 @@ app.use(bodyParser.json())
 app.get('/getAccessToken', async (req, res) => {
     console.log(req)
     const params = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}`
-    console.log(req.query.code)
     await fetch("https://github.com/login/oauth/access_token" + params, {
         method: "POST",
         headers: {
@@ -23,7 +22,6 @@ app.get('/getAccessToken', async (req, res) => {
     }).then((response) => {
         return response.json();
     }).then((data) => {
-        console.log(data);
         res.json(data);
     })
 })

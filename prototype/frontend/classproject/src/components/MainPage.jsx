@@ -9,7 +9,21 @@ const MainPage = (props) => {
 
     };
 
-    const handleClick = () => {
+    async function getUserData(){
+        res = "";
+        await fetch("http://localhost:3002/getUserData", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("accessToken")
+            }}).then((response) => {
+                return response.json();
+            }).then((data) => {
+                res = data.login
+        })
+        return res;
+    }
+
+    const handleClick = async () => {
         const parsedInput = searchTerm.split("-");
         var config = {
             method: 'get',
@@ -24,7 +38,10 @@ const MainPage = (props) => {
           .catch(function (error) {
             console.log(error);
           });
-          
+    }
+
+    const handleLogOut = () => {
+        localStorage.removeItem("accessToken");
     }
 
     return(
@@ -40,6 +57,11 @@ const MainPage = (props) => {
                 className="border-4 border-gray-500 rounded-2xl w-1/5 mx-auto hover:bg-gray-700 hover:text-white"
                 onClick={handleClick}>
                     Search
+            </button>
+            <button 
+                className="border-4 border-gray-500 mt-8 rounded-2xl w-1/5 mx-auto hover:bg-gray-700 hover:text-white"
+                onClick={handleLogOut}>
+                    Log Out
             </button>
         </div>
     )

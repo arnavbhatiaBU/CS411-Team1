@@ -9,9 +9,6 @@ import SignIn from './components/Login';
 function App() {
   const [searchRes, setSearchRes] = useState([]);
   const [isLoggedIn, setisLoggedIn] = useState(localStorage.getItem("accessToken") !== null);
-  const handleLoginSuccess= () => {
-    setisLoggedIn(true);
-  };
   const reloadPage = () => {
     window.location.reload(false);
   }
