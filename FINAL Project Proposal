@@ -7,5 +7,5 @@ Clicking on the national holiday will then generate a playlist (limited: 20) in 
 For example, if today is national basketball day, clicking on that button will generate a Spotify playlist about basketball. 
 We will be using Python for both the front and back end. Additionally, we will Flask for the backend and React for the front end as frameworks. 
 The public APIs we will be using is a national days calendar API  and the Spotify API. 
-For third party authentication, we will use OAuth through your Google profile.
+For third party authentication, we will use OAuth through GitHub.
 We will use a decoupled architecture in which the front and back ends will communicate via a RESTful interface. 
