@@ -13,7 +13,6 @@ function App() {
   
   return (
     <div className="text-center">
-      <style>{'body {backgound-color: black;}'}</style>
       <center><img src={logo} alt="logo" width='250' height='250' /></center>
       <style>{'body { background-color: grey; }'}</style>
       {isLoggedIn ? 

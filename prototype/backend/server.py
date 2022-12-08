@@ -36,12 +36,11 @@ def handle_signin():
     with open("./userInfo.json", "r") as f:
         all_users = json.load(f)
         if user_name not in all_users:
-            return "user does not exists"
+            return "User does not exists"
         elif all_users[user_name] == user_password:
             return user_name
         else:
-            return "password does not match"
-
+            return "The inputted password does not match"
  
 @app.route("/nationalholiday")
 def national_holiday():
@@ -63,12 +62,12 @@ def holiday_by_date():
 
     print(f"look for month {lookup_month}, and date {lookup_day}")
 
-    api_key = ""
+    holiday_api_key = ""
     with open("./config.json") as f:
         config = json.load(f)
-        api_key = config["nationalHolidayKey"]
+        holiday_api_key = config["nationalHolidayKey"]
     
-    url = f"https://holidayapi.com/v1/holidays?pretty&key={api_key}&country=US&year=2021"
+    url = f"https://holidayapi.com/v1/holidays?pretty&key={holiday_api_key}&country=US&year=2021"
 
     raw_response = requests.request("GET", url)
     parsed_response = raw_response.json()
@@ -95,7 +94,7 @@ def holiday_by_date():
 
     return res_with_track
 
-def get_track(holiday_name):
+def get_track(spotify_api_key):
     # Get the access token
     auth_url = "https://accounts.spotify.com/api/token"
 
@@ -122,7 +121,8 @@ def get_track(holiday_name):
         "Authorization": f"Bearer {access_token}"    
     }
 
-    res = requests.get(url="https://api.spotify.com/v1/search?q={holiday_name}&type=track", headers=header)
+    res = requests.get(url=f"https://api.spotify.com/v1/search?q={spotify_api_key}&type=track", headers=header)
+    response = requests.request("GET", res)
 
     res_cleaned = res.json()
     res_tracks = res_cleaned["tracks"]

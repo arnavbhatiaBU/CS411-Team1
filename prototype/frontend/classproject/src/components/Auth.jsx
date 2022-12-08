@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import SignIn from "./Login";
+import SignUp from "./Register";
 
 const Auth = (props) => {
     const [displaySignIn, setDisplaySignin] = useState(true);
@@ -10,7 +10,8 @@ const Auth = (props) => {
 
     return(
         <>
-        {displaySignIn ? <SignIn goToSignUp={toggleSignIn} success={props.signinSuccess}></SignIn> : <SignUp goToSignIn={toggleSignIn} success={props.signinSuccess}></SignUp>}
+        {displaySignIn ? <SignIn goToSignUp={toggleSignIn} success={props.signinSuccess}></SignIn> : 
+        <SignUp goToSignIn={toggleSignIn} success={props.signinSuccess}></SignUp>}
         </>
     )
 }

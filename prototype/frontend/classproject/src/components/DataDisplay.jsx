@@ -1,5 +1,4 @@
 const DataDisplay = (props) => {
-    console.log(props.tracks[0])
     return(
         <li className="my-4 border-2 border-gray-500 rounded-md p-2 w-1/2 mx-auto">
             <h1 className = "text-2xl">{props.name}</h1>
