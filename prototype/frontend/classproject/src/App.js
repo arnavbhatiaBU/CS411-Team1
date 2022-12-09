@@ -4,8 +4,6 @@ import DataDisplay from "./components/DataDisplay";
 import logo from './components/SpotiDate-1.png'
 import SignIn from './components/Login';
 
-
-
 function App() {
   const [searchRes, setSearchRes] = useState([]);
   const [isLoggedIn, setisLoggedIn] = useState(localStorage.getItem("accessToken") !== null);
