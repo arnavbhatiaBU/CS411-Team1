@@ -1,14 +1,15 @@
 import Sound from 'react-sound'
-import metro from './components/Metro.mp3'
-import {useState} from "react"
+import metro from '.components/Metro.mp3'
+import {useState} from "react";
 
 function Song() {
     const PlaySound = (
         handleSongLoading,
         handleSongPlaying,
         handleSongFinishedPlaying
-    );
-    const [isPlaying, setIsPlaying] = useState(false);
+      );
+      const [isPlaying, setIsPlaying] = useState(false);
+
     return (
         <div className="Song">
             <Sound 

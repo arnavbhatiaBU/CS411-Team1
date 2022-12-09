@@ -1,8 +1,9 @@
 import MainPage from './components/MainPage';
-import { useState } from "react";
+import {useState} from "react";
 import DataDisplay from "./components/DataDisplay";
 import logo from './components/SpotiDate-1.png'
 import SignIn from './components/Login';
+
 
 function App() {
   const [searchRes, setSearchRes] = useState([]);
@@ -10,11 +11,11 @@ function App() {
   const reloadPage = () => {
     window.location.reload(false);
   }
+  
   return (
     <div className="text-center">
       <center><img src={logo} alt="logo" width='250' height='250' /></center>
       <style>{'body { background-color: grey; }'}</style>
-      
       {isLoggedIn ? 
       <>
       <MainPage updateRes={setSearchRes}></MainPage>
@@ -23,7 +24,7 @@ function App() {
       </ul>
       </>
        : 
-       <SignIn reloadPage={reloadPage}></SignIn>
+        <SignIn reloadPage={reloadPage}></SignIn>
 }
     </div>
   );
