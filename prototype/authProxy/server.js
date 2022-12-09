@@ -42,5 +42,5 @@ app.get('/getUserData', async (req, res) => {
 })
 
 app.listen(3002, function () {
-    console.log("running")
+    console.log("This server is running")
 })

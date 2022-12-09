@@ -42,13 +42,15 @@ const MainPage = (props) => {
 
     const handleLogOut = () => {
         localStorage.removeItem("accessToken");
+        window.location.assign("http://localhost:3000/")
     }
 
     return(
         <div className="flex flex-col">
+            <h1> Input your favorite holiday date and recieve the top 20 songs you can celebrate it with! </h1>
             <input 
                 className="w-2/3 mx-auto text-center mt-10 border-4 border-gray-600 rounded-xl mb-4" 
-                placeholder="Search terms"
+                placeholder="yyyy-mm-dd"
                 value={searchTerm}
                 onChange={handleChange}
                 >
@@ -59,7 +61,7 @@ const MainPage = (props) => {
                     Search
             </button>
             <button 
-                className="border-4 border-gray-500 mt-8 rounded-2xl w-1/5 mx-auto hover:bg-gray-700 hover:text-white"
+                className="border-4 border-gray-500 mt-4 rounded-2xl w-1/5 mx-auto hover:bg-gray-700 hover:text-white"
                 onClick={handleLogOut}>
                     Log Out
             </button>

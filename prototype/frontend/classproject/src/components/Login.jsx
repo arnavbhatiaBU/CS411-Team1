@@ -2,8 +2,8 @@ import {useState, useEffect} from "react";
 
 const CLIENT_ID = "1bc64da3c71c4ba24665";
 const SignIn = (props) => {
-    const buttonStyle = "text-center border-2 rounded-md border-green-700 w-1/6 ml-auto mr-auto mt-8 text-gray-700 py-2 hover:bg-amber-50 hover:text-gray-600 font-raleway";
-    const backgroundStyle = "h-screen w-screen bg-gray-200 flex justify-center";
+    const buttonStyle = "border-4 border-gray-500 rounded-2xl w-1/5 mx-auto hover:bg-green-700 hover:text-black";
+    const backgroundStyle = "w-2/3 mx-auto text-center mt-10 border-4 border-gray-600 rounded-xl mb-4";
     const [rerender, setrerender] = useState(false)
 
     useEffect (async () => {
@@ -29,17 +29,14 @@ const SignIn = (props) => {
         }
     }, []);
 
-
-
     function githubLogin(){
         window.location.assign("https://github.com/login/oauth/authorize?scope=user&client_id=" + CLIENT_ID);
     }
     
-
     return(
         <div className={backgroundStyle}>
             <h3>Please Log In to Access Spotidate!</h3>
-            <button
+            <button 
                 className={buttonStyle}
                 onClick={githubLogin}
             >
