@@ -6,7 +6,6 @@ const MainPage = (props) => {
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
-
     };
 
     async function getUserData(){
