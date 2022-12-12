@@ -1,4 +1,3 @@
-As a user, I want to be able to link my GitHub account or login through my GitHub account. 
-This would allow me to log in more easily to Spotidate. 
-I do not want to have to worry about creating an account.
-I would also like to be auto-logged in once I've logged in through GitHub for the first time
+As a user, I want to be able to link my GitHub account or login through my GitHub account so I can log in more easily to Spotidate. 
+I do not want to have to worry about creating an account so I can remain anonymous.
+I would also like to be auto-logged in once I've logged in through GitHub for the first time so I do not have to over and over again.  
