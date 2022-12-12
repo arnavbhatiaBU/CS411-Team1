@@ -1,4 +1,4 @@
-For our application we used Python, with using Flask for the backend and React for the frontend. 
+For our application Spotidate we used Python, with using Flask for the backend and React for the frontend. 
 We also use Javascript for our GitHub OAuth Server.
 We chose Flask due to the simplicity of the framework which did not require an extensive external library. 
 It also does not require a steep learning curve which was pivotal in our decision-making for a project we have a limited timeframe to finish. 
