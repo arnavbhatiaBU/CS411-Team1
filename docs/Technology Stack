@@ -1,5 +1,5 @@
-For our application we used python, with using Flask for the backend and React and React for the frontend. 
-We also use javascript for our GitHub OAuth Server.
+For our application we used Python, with using Flask for the backend and React for the frontend. 
+We also use Javascript for our GitHub OAuth Server.
 We chose Flask due to the simplicity of the framework which did not require an extensive external library. 
 It also does not require a steep learning curve which was pivotal in our decision-making for a project we have a limited timeframe to finish. 
 We decided that this was a better option compared to Django or Express, which felt too complex for the scope of our project. 
