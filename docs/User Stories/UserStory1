@@ -1,4 +1,3 @@
-As a user, I want to be able to easily search old and new days. 
+As a user, I want to be able to easily search multiple dates in a session. 
 After I look up one date in Spotidate, I do not want to have to log out in order to create a new search.
-When I look up a date, I would like to see the songs displayed neatly for a suggested playlist.  
-I would also like to easily see what holiday to which each of the playlists correspond.
+Additionally, I want to be able to search not just today's date but old and future dates as well. 
